@@ -1,9 +1,11 @@
 package br.com.helptechbackend.Controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,8 +19,12 @@ public class Login_Controller {
     @Autowired
     private Login_Repository db;
 
-    @GetMapping(path = "/")
-    public List<Login> allLogins() {
-        return db.findAll();
+    @PostMapping(path = "/")
+    public boolean login(@RequestBody Login login) {
+        Login user = db.logar(login.getNome(), login.getSenha());
+        if (user != null) {
+            return true;
+        }
+        return false;
     }
 }
