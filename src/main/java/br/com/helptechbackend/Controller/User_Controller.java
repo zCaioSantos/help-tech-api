@@ -32,19 +32,19 @@ public class User_Controller {
         return db.findAll();
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @GetMapping(path = "/{id}")
     public Optional<Users> findUserById(@PathVariable int id) {
         return db.findById(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @PostMapping(path = "/")
     public Users saveUser(@RequestBody Users user) {
         return db.save(user);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @PutMapping(path = "/{id}")
     public ResponseEntity<?> updateCliente(@PathVariable int id, @RequestBody Users user) {
         var resp = db.findById(id);
@@ -64,7 +64,7 @@ public class User_Controller {
         return ResponseEntity.notFound().build();
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<?> deleteUsers(@PathVariable int id) {
 

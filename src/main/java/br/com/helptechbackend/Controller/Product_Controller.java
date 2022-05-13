@@ -31,19 +31,19 @@ public class Product_Controller {
         return db.findAll();
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @GetMapping(path = "/{id}")
     public Optional<Protucts> findProtuctsById(@PathVariable int id) {
         return db.findById(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @PostMapping(path = "/")
     public Protucts saveProtucts(@RequestBody Protucts protucts) {
         return db.save(protucts);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @PutMapping(path = "/{id}")
     public ResponseEntity<?> updateProtucts(@PathVariable int id, @RequestBody Protucts protucts) {
         var resp = db.findById(id);
@@ -68,7 +68,7 @@ public class Product_Controller {
         return ResponseEntity.notFound().build();
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<?> deleteProtucts(@PathVariable int id) {
 
